@@ -12,5 +12,5 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: https://2308502963.github.io
-Sitemap: https://2308502963.github.io
+Sitemap: https://2308502963.github.io/sitemap.xml
+Sitemap: https://2308502963.github.io/baidusitemap.xml
