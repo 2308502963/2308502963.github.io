@@ -151,9 +151,7 @@
   <entry>
     <title>ssm学习过程中遇到的问题</title>
     <url>/2019/12/07/ssm%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>能力有限，所以遇到的问题都是一些比较初级的问题。</p>
-<hr>
-<h5 id="2019-09-26："><a href="#2019-09-26：" class="headerlink" title="2019/09/26："></a>2019/09/26：</h5><p>1.配置包扫描器的时候把多写了类名，控制台报错No mapper…..</p>
+    <content><![CDATA[<h5 id="2019-09-26："><a href="#2019-09-26：" class="headerlink" title="2019/09/26："></a>2019/09/26：</h5><p>1.配置包扫描器的时候把多写了类名，控制台报错No mapper…..</p>
 <p>2.maven项目导不进jar包：</p>
 <p>​                    出错原因：在pom.xml中添加依赖的时候外层多了denpendencyManegement标签对，导致jar包导不进，具体原因不清楚。</p>
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;denpendencyManagement&gt;</span></pre></td></tr><tr><td class="code"><pre><span class="line">	&lt;denpendencies&gt;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    &lt;/denpendencies&gt;</span></pre></td></tr><tr><td class="code"><pre><span class="line">&lt;/denpendencyManagement&gt;</span></pre></td></tr></table></figure>
@@ -245,15 +243,15 @@
       </tags>
   </entry>
   <entry>
-    <title>original intention of blog</title>
-    <url>/2019/12/06/original-intention-of-blog/</url>
-    <content><![CDATA[<h1 id="初衷"><a href="#初衷" class="headerlink" title="初衷"></a>初衷</h1><p>1.记录一些自己喜欢的东西</p>
+    <title>置顶</title>
+    <url>/2019/12/06/%E7%BD%AE%E9%A1%B6/</url>
+    <content><![CDATA[<h1 id="初衷"><a href="#初衷" class="headerlink" title="初衷"></a>初衷</h1><p>无意间看到的一个东西，觉得挺有意思。就试试看<br>感觉也会给自己的学习提供一些帮助。</p>
 <hr>
-<hr>
-<p>2.记录一些自己学习过程中遇到的坑</p>
+<p>记录一些学习过程中遇到的东西，障碍啊、新的知识啊等等</p>
+<p>也记录一些自己喜欢的东西</p>
 ]]></content>
       <categories>
-        <category>初衷</category>
+        <category>置顶</category>
       </categories>
       <tags>
         <tag>ideology</tag>
