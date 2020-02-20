@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Guitar,流行的云," />
+  <meta name="keywords" content="分页," />
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="前两天看了一下流行的云的谱子，发现居然可以直接手撸，叼的。本身就很简单的一首取曲子。 ​">
-<meta name="keywords" content="Guitar,流行的云">
+<meta name="description" content="1.基本思路我现阶段的分页查询的实现是基于sql语句的。1select * from user where id limit a, b 构造出相应的a和b就可以查询出想要的数据，在显示在页面上。重点是要构造出当前的页数，就要封装一个javaBean，存储有关分页的基本属性。 这样只需在service层计算想要的页数，并封装基本的信息，在查询出来显示在前端就可以了。 2.具体实现1.定义JavaBe">
+<meta name="keywords" content="分页">
 <meta property="og:type" content="article">
-<meta property="og:title" content="流行的云">
-<meta property="og:url" content="https:&#x2F;&#x2F;2308502963.github.io&#x2F;2019&#x2F;12&#x2F;10&#x2F;%E6%B5%81%E8%A1%8C%E7%9A%84%E4%BA%91&#x2F;index.html">
+<meta property="og:title" content="分页查询">
+<meta property="og:url" content="https:&#x2F;&#x2F;2308502963.github.io&#x2F;2020&#x2F;02&#x2F;20&#x2F;%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2&#x2F;index.html">
 <meta property="og:site_name" content="买条秋裤穿的个人博客">
-<meta property="og:description" content="前两天看了一下流行的云的谱子，发现居然可以直接手撸，叼的。本身就很简单的一首取曲子。 ​">
+<meta property="og:description" content="1.基本思路我现阶段的分页查询的实现是基于sql语句的。1select * from user where id limit a, b 构造出相应的a和b就可以查询出想要的数据，在显示在页面上。重点是要构造出当前的页数，就要封装一个javaBean，存储有关分页的基本属性。 这样只需在service层计算想要的页数，并封装基本的信息，在查询出来显示在前端就可以了。 2.具体实现1.定义JavaBe">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;2308502963&#x2F;images_stroe&#x2F;master&#x2F;Guitar&#x2F;pic&#x2F;%E6%B5%81%E8%A1%8C%E7%9A%84%E4%BA%91&#x2F;1.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;2308502963&#x2F;images_stroe&#x2F;master&#x2F;Guitar&#x2F;pic&#x2F;%E6%B5%81%E8%A1%8C%E7%9A%84%E4%BA%91&#x2F;2.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;2308502963&#x2F;images_stroe&#x2F;master&#x2F;Guitar&#x2F;pic&#x2F;%E6%B5%81%E8%A1%8C%E7%9A%84%E4%BA%91&#x2F;3.png">
-<meta property="og:updated_time" content="2019-12-10T06:05:28.967Z">
+<meta property="og:image" content="c:%5CUsers%5CAdministrator%5CDesktop%5C%E6%96%87%E4%BB%B6%5CGit%5Cimages_stroe%5Cimages%5Cimage-20200220201539392.png">
+<meta property="og:updated_time" content="2020-02-20T12:33:24.219Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;2308502963&#x2F;images_stroe&#x2F;master&#x2F;Guitar&#x2F;pic&#x2F;%E6%B5%81%E8%A1%8C%E7%9A%84%E4%BA%91&#x2F;1.png">
+<meta name="twitter:image" content="c:%5CUsers%5CAdministrator%5CDesktop%5C%E6%96%87%E4%BB%B6%5CGit%5Cimages_stroe%5Cimages%5Cimage-20200220201539392.png">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://2308502963.github.io/2019/12/10/流行的云/"/>
+  <link rel="canonical" href="https://2308502963.github.io/2020/02/20/分页查询/"/>
 
 
 
 
 
-  <title>流行的云 | 买条秋裤穿的个人博客</title>
+  <title>分页查询 | 买条秋裤穿的个人博客</title>
   
 
 
@@ -306,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://2308502963.github.io/2019/12/10/%E6%B5%81%E8%A1%8C%E7%9A%84%E4%BA%91/">
+    <link itemprop="mainEntityOfPage" href="https://2308502963.github.io/2020/02/20/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="买条秋裤穿">
@@ -323,7 +321,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">流行的云</h2>
+          <h2 class="post-title" itemprop="name headline">分页查询</h2>
         
 
         <div class="post-meta">
@@ -336,8 +334,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-10T12:45:42+08:00">
-                2019-12-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-20T20:27:28+08:00">
+                2020-02-20
               </time>
             
 
@@ -346,28 +344,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%88%B1%E5%A5%BD/" itemprop="url" rel="index">
-                    <span itemprop="name">爱好</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -396,10 +372,20 @@
       
 
       
-        <p>前两天看了一下流行的云的谱子，发现居然可以直接手撸，叼的。本身就很简单的一首取曲子。</p>
-<p>​    <img src="https://raw.githubusercontent.com/2308502963/images_stroe/master/Guitar/pic/%E6%B5%81%E8%A1%8C%E7%9A%84%E4%BA%91/1.png" alt="1"></p>
-<p><img src="https://raw.githubusercontent.com/2308502963/images_stroe/master/Guitar/pic/%E6%B5%81%E8%A1%8C%E7%9A%84%E4%BA%91/2.png" alt="2"></p>
-<p><img src="https://raw.githubusercontent.com/2308502963/images_stroe/master/Guitar/pic/%E6%B5%81%E8%A1%8C%E7%9A%84%E4%BA%91/3.png" alt="3"></p>
+        <h2 id="1-基本思路"><a href="#1-基本思路" class="headerlink" title="1.基本思路"></a>1.基本思路</h2><pre><code>我现阶段的分页查询的实现是基于sql语句的。</code></pre><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> <span class="keyword">id</span> <span class="keyword">limit</span> a, b</span></pre></td></tr></table></figure>
+<p>构造出相应的a和b就可以查询出想要的数据，在显示在页面上。重点是要构造出当前的页数，就要封装一个javaBean，存储有关分页的基本属性。</p>
+<p>这样只需在service层计算想要的页数，并封装基本的信息，在查询出来显示在前端就可以了。</p>
+<h2 id="2-具体实现"><a href="#2-具体实现" class="headerlink" title="2.具体实现"></a>2.具体实现</h2><h3 id="1-定义JavaBean"><a href="#1-定义JavaBean" class="headerlink" title="1.定义JavaBean"></a>1.定义JavaBean</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@Data</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PageBean</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> Integer page;<span class="comment">//当前页数</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> Integer limit;<span class="comment">//每页显示数</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> Integer totalPage;<span class="comment">//总页数</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> Integer total;<span class="comment">//总记录数</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> List&lt;T&gt; pageRecode;<span class="comment">//当前页面的数据集合</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt; pages;<span class="comment">//返回页数的集合，用于显示index页面的上一页、下一页</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<h3 id="2-controller："><a href="#2-controller：" class="headerlink" title="2.controller："></a>2.controller：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">PageBean&lt;QuestionDTO&gt; pageBean = questionService.questionList(page);</span></pre></td></tr></table></figure>
+<p>返回一个QuestionDTO类型的JavaBean，其中包含了分页的一些信息和当前页面所要显示的数据集合。有关QuestionDTO：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@Data</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QuestionDTO</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> Integer id;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> String title;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> String description;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> Long gmtCreate;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> Long GmtModified;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> Integer creator;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> Integer attentionCount;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> Integer viewCount;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> Integer likeCount;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> String tag;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> User user;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<h3 id="3-调用的Service："><a href="#3-调用的Service：" class="headerlink" title="3.调用的Service："></a>3.调用的Service：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"> <span class="comment">//查询所有的问题回显到index页面</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> PageBean&lt;QuestionDTO&gt; <span class="title">questionList</span><span class="params">(Integer page)</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    List&lt;QuestionDTO&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    PageBean&lt;QuestionDTO&gt; pagesinfo = <span class="keyword">new</span> PageBean&lt;&gt;();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">//1.设置limit</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    Integer limit = <span class="number">5</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    pagesinfo.setLimit(limit);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">//2.设置总记录数</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    Integer total = questionMapper.fingCount();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    pagesinfo.setTotal(total);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">//3.设置总的页数</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    Integer totalPage;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span>(total % limit == <span class="number">0</span>)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        totalPage = total / limit;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">    &#125;<span class="keyword">else</span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">        totalPage = total / limit + <span class="number">1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">    pagesinfo.setTotalPage(totalPage);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">//4.设置页数的集合</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">    List&lt;Integer&gt; pages = <span class="keyword">new</span> ArrayList&lt;&gt;();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;totalPage+<span class="number">1</span>;i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">        pages.add(i);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">    pagesinfo.setPages(pages);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">//5.设置每页的数据集合</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">    List&lt;Question&gt; questions = questionMapper.questionList(page,limit);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">for</span>(Question question : questions)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">        User user = userMapper.findById(question.getCreatar());</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">        QuestionDTO questionDTO = <span class="keyword">new</span> QuestionDTO();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">        BeanUtils.copyProperties(question,questionDTO);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">        questionDTO.setUser(user);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">        list.add(questionDTO);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">    pagesinfo.setPageRecode(list);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> pagesinfo;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<p>在service层为PageBean的属性赋值，并且查询出相关的数据。第4步如果有疑惑请参照<a href="">多表联合查询的简单另类的实现方式</a>。</p>
+<h3 id="4-mapper"><a href="#4-mapper" class="headerlink" title="4.mapper"></a>4.mapper</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//查询所有的问题并回显到index页面</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Select</span>(<span class="string">"select * from question where id limit #&#123;page&#125;,#&#123;limit&#125;"</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"> <span class="function">List&lt;Question&gt; <span class="title">questionList</span><span class="params">(Integer page, Integer limit)</span></span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"> <span class="comment">//查询总的问题数</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Select</span>(<span class="string">"select count(id) from question"</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"> <span class="function">Integer <span class="title">fingCount</span><span class="params">()</span></span>;</span></pre></td></tr></table></figure>
+<p>做完这些，controller中的PageBean中就会封装有查询的数据。在返回前端显示就完成了。</p>
+<h3 id="5-前端代码"><a href="#5-前端代码" class="headerlink" title="5.前端代码"></a>5.前端代码</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 分页 --&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">          <span class="tag">&lt;<span class="name">nav</span> <span class="attr">aria-label</span>=<span class="string">"Page navigation"</span> <span class="attr">th:align</span>=<span class="string">"right"</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">              <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"pagination"</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">                  <span class="tag">&lt;<span class="name">li</span> <span class="attr">th:if</span>=<span class="string">"$&#123;pageBean.totalPage&gt;5 || pageBean.totalPage==1&#125;"</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">                      <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">aria-label</span>=<span class="string">"Previous"</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">                          <span class="tag">&lt;<span class="name">span</span> <span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span>&amp;laquo;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">                      <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">                  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">                  <span class="tag">&lt;<span class="name">li</span>  <span class="attr">th:each</span>=<span class="string">"page:$&#123;pageBean.pages&#125;"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">th:text</span>=<span class="string">"$&#123;page&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">                  <span class="tag">&lt;<span class="name">li</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">                      <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">aria-label</span>=<span class="string">"Next"</span> <span class="attr">th:if</span>=<span class="string">"$&#123;pageBean.totalPage&gt;5&#125;"</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">                          <span class="tag">&lt;<span class="name">span</span> <span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span>&amp;raquo;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">                      <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">                  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">              <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">          <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span></pre></td></tr></table></figure>
+<p>循环取出page。</p>
+<h3 id="6-效果展示"><a href="#6-效果展示" class="headerlink" title="6.效果展示"></a>6.效果展示</h3><p><img src="C:%5CUsers%5CAdministrator%5CDesktop%5C%E6%96%87%E4%BB%B6%5CGit%5Cimages_stroe%5Cimages%5Cimage-20200220201539392.png" alt=""></p>
 
       
     </div>
@@ -426,9 +412,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Guitar/" rel="tag"><i class="fa fa-tag"></i> Guitar</a>
-          
-            <a href="/tags/%E6%B5%81%E8%A1%8C%E7%9A%84%E4%BA%91/" rel="tag"><i class="fa fa-tag"></i> 流行的云</a>
+            <a href="/tags/%E5%88%86%E9%A1%B5/" rel="tag"><i class="fa fa-tag"></i> 分页</a>
           
         </div>
       
@@ -441,8 +425,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/07/ssm%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" rel="next" title="ssm学习过程中遇到的问题">
-                <i class="fa fa-chevron-left"></i> ssm学习过程中遇到的问题
+              <a href="/2020/01/17/SpringBoot%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" rel="next" title="SpringBoot快速入门">
+                <i class="fa fa-chevron-left"></i> SpringBoot快速入门
               </a>
             
           </div>
@@ -450,10 +434,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/10/always-with-me/" rel="prev" title="always with me">
-                always with me <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -505,8 +485,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -525,7 +514,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -536,7 +525,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -547,7 +536,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -586,6 +575,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-基本思路"><span class="nav-number">1.</span> <span class="nav-text">1.基本思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-具体实现"><span class="nav-number">2.</span> <span class="nav-text">2.具体实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-定义JavaBean"><span class="nav-number">2.1.</span> <span class="nav-text">1.定义JavaBean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-controller："><span class="nav-number">2.2.</span> <span class="nav-text">2.controller：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-调用的Service："><span class="nav-number">2.3.</span> <span class="nav-text">3.调用的Service：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-mapper"><span class="nav-number">2.4.</span> <span class="nav-text">4.mapper</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-前端代码"><span class="nav-number">2.5.</span> <span class="nav-text">5.前端代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-效果展示"><span class="nav-number">2.6.</span> <span class="nav-text">6.效果展示</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
