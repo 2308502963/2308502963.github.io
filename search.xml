@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>mysql1033错误结局办法</title>
+    <url>/2020/03/04/mysql1033%E9%94%99%E8%AF%AF%E7%BB%93%E5%B1%80%E5%8A%9E%E6%B3%95/</url>
+    <content><![CDATA[<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200304153303824.png" alt="image-20200304153303824"></p>
+<p>查看日志，</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200304161917186.png" alt="image-20200304161917186"></p>
+<p>在网上找了一下，发现：原因:数据库中大部分表都是 MyISAM引擎的，而新建的表默认是用的InnoDB引擎，本来是没有问题的，用InnoDB也可以正常运行，查看了数据库的配置果然禁用了InnoDB引擎。</p>
+<p>ib_logfile0和ib_logfile1是关于数据库的一些日志文件；</p>
+<p>​                       .frm文件是数据库中很多的表的结构描述文件；</p>
+<p>​                       ibdata1文件时数据库的真实数据存放文件；  </p>
+<p>==没有改出来==</p>
+]]></content>
+  </entry>
+  <entry>
     <title>分页查询</title>
     <url>/2020/02/20/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/</url>
-    <content><![CDATA[<h2 id="1-基本思路"><a href="#1-基本思路" class="headerlink" title="1.基本思路"></a>1.基本思路</h2><pre><code>我现阶段的分页查询的实现是基于sql语句的。</code></pre><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> <span class="keyword">id</span> <span class="keyword">limit</span> a, b</span></pre></td></tr></table></figure>
+    <content><![CDATA[<h2 id="1-基本思路"><a href="#1-基本思路" class="headerlink" title="1.基本思路"></a>1.基本思路</h2><p>我现阶段的分页查询的实现是基于sql语句的。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> <span class="keyword">id</span> <span class="keyword">limit</span> a, b</span></pre></td></tr></table></figure>
 <p>构造出相应的a和b就可以查询出想要的数据，在显示在页面上。重点是要构造出当前的页数，就要封装一个javaBean，存储有关分页的基本属性。</p>
 <p>这样只需在service层计算想要的页数，并封装基本的信息，在查询出来显示在前端就可以了。</p>
 <h2 id="2-具体实现"><a href="#2-具体实现" class="headerlink" title="2.具体实现"></a>2.具体实现</h2><h3 id="1-定义JavaBean"><a href="#1-定义JavaBean" class="headerlink" title="1.定义JavaBean"></a>1.定义JavaBean</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@Data</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PageBean</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">private</span> Integer page;<span class="comment">//当前页数</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">private</span> Integer limit;<span class="comment">//每页显示数</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">private</span> Integer totalPage;<span class="comment">//总页数</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">private</span> Integer total;<span class="comment">//总记录数</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">private</span> List&lt;T&gt; pageRecode;<span class="comment">//当前页面的数据集合</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt; pages;<span class="comment">//返回页数的集合，用于显示index页面的上一页、下一页</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
@@ -394,42 +408,6 @@
 
 <hr>
 <hr>
-<blockquote class="blockquote-center"><p>结束语！</p>
-<p>加油!</p>
-</blockquote>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ]]></content>
       <categories>
         <category>springmvc</category>
