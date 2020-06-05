@@ -61,6 +61,221 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java字符串拼接" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/04/java%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5/" class="article-date">
+  <time datetime="2020-06-04T03:06:17.000Z" itemprop="datePublished">2020-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/04/java%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5/">java字符串拼接</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>字符串的拼接，常使用到的大概有4种方式：</p>
+<p>1.直接使用”+”号</p>
+<p>2.使用String的concat方法</p>
+<p>3.使用StringBuilder的append方法</p>
+<p>4.使用StringBuffer的append方法</p>
+<hr>
+<p>由于String是final类型的，因此String对象都是属于不可变对象，因此，在需要对字符串进行修改操作的时候（比如字符串的连接或者是替换），String总是会生成新的对象。</p>
+<h5 id="1-“-”"><a href="#1-“-”" class="headerlink" title="1.“+”"></a>1.“+”</h5><p>如果不考虑其他，使用“+”号来连接字符串无疑是最方便、最快捷的方式。但是事实上，使用“+”号连接字符串的效率并不高，。</p>
+<p>贴出测试用的demo</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Str</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        String str1 = <span class="string">"hello"</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        String str2 = <span class="string">"wolrd"</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        String str = str1 + str2;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        System.out.println(str);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p>贴出Str通过编译之后产生的字节码文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">fzkj</span>.<span class="title">str</span>.<span class="title">Str</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="keyword">public</span> com.fzkj.str.Str();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    Code:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">       <span class="number">0</span>: aload_0</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">       1: invokespecial #1                  // Method java/lang/Object."&lt;init&gt;":()V</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">       <span class="number">4</span>: <span class="keyword">return</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(java.lang.String[])</span></span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    Code:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">       0: ldc           #2                  // String hello</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">       <span class="number">2</span>: astore_1</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">       3: ldc           #3                  // String wolrd</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">       <span class="number">5</span>: astore_2</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">       6: new           #4                  // class java/lang/StringBuilder</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">       <span class="number">9</span>: dup</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">      10: invokespecial #5                  // Method java/lang/StringBuilder."&lt;init&gt;":()V</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">      <span class="number">13</span>: aload_1</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">      14: invokevirtual #6                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">      <span class="number">17</span>: aload_2</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">      18: invokevirtual #6                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">      21: invokevirtual #7                  // Method java/lang/StringBuilder.toString:()Ljava/lang/String;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">      <span class="number">24</span>: astore_3</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">      25: getstatic     #8                  // Field java/lang/System.out:Ljava/io/PrintStream;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">      <span class="number">28</span>: aload_3</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">      29: invokevirtual #9                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">      <span class="number">32</span>: <span class="keyword">return</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p>通过上面的字节码文件可以看出，在执行String str = str1 + str2;这一条语句的时候，其实底层是调用了StringBuilder的append方法来实现，就是说使用“+”号连接字符串的时候，底层会new一个StringBuilder对象，调用该对象的append方法将字符串拼接起来，最后通过toString方法返回拼接之后的值。</p>
+<p>也就是字符串str1+str2就等效于下面的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">String str1 = <span class="string">"hello"</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">String str2 = <span class="string">"wolrd"</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">sb.append(str1).append(str2);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">String s = sb.toString();</span></pre></td></tr></table></figure>
+
+<p>在数据量很大的时候，比如说循环一万次，那就会创建一万个StringBuilder对象。所以说使用”+”号拼接字符串的效率很低。</p>
+<p>最后在看一下使用”+”号拼接str1和str2，100000次的耗时。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Str</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        String str1 = <span class="string">"hello"</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        String str2 = <span class="string">"wolrd"</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">long</span> startTime = System.currentTimeMillis();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        System.out.println(<span class="string">"开始执行时间："</span>+ startTime);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">            String str = str1 + str2;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">long</span> stopTime = System.currentTimeMillis();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        System.out.println(<span class="string">"结束执行时间："</span>+ stopTime);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        System.out.println(<span class="string">"执行100000次字符串拼接总共耗时："</span>+(stopTime - startTime)+<span class="string">"ms"</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">开始执行时间：<span class="number">1591326544582</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">结束执行时间：<span class="number">1591326544601</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">执行<span class="number">100000</span>次字符串拼接总共耗时：<span class="number">19</span>ms</span></pre></td></tr></table></figure>
+
+<h5 id="2-concat"><a href="#2-concat" class="headerlink" title="2.concat"></a>2.concat</h5><p>concat源码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">concat</span><span class="params">(String str)</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">int</span> otherLen = str.length();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> (otherLen == <span class="number">0</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">int</span> len = value.length;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">char</span> buf[] = Arrays.copyOf(value, len + otherLen);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    str.getChars(buf, len);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> String(buf, <span class="keyword">true</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p>从concat方法的源码中可以看出来，concat就是申请了一个char数组，将需要拼接的字符串放到这个数组中，最后转换为String返回。</p>
+<p>还是记录拼接100000次，总共的耗时</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Str</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        String str1 = <span class="string">"hello"</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        String str2 = <span class="string">"wolrd"</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">// 使用concat连接字符串</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        String concat = str1.concat(str2);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">long</span> startTime = System.currentTimeMillis();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        System.out.println(<span class="string">"开始执行时间："</span>+ startTime);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">            String str = str1.concat(str2);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">long</span> stopTime = System.currentTimeMillis();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        System.out.println(<span class="string">"结束执行时间："</span>+ stopTime);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">        System.out.println(<span class="string">"执行100000次字符串拼接总共耗时："</span>+(stopTime - startTime)+<span class="string">"ms"</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">开始执行时间：<span class="number">1591328017552</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">结束执行时间：<span class="number">1591328017561</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">执行<span class="number">100000</span>次字符串拼接总共耗时：<span class="number">9</span>ms</span></pre></td></tr></table></figure>
+
+<h5 id="3-StringBuffer-StringBuilder"><a href="#3-StringBuffer-StringBuilder" class="headerlink" title="3.StringBuffer/StringBuilder"></a>3.StringBuffer/StringBuilder</h5><p>这两个类都继承了同一个抽象类AbstractStringBuilder；而这两个类的append方法都是调用的父类中的append方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> AbstractStringBuilder <span class="title">append</span><span class="params">(String str)</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> (str == <span class="keyword">null</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> appendNull();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">int</span> len = str.length();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    ensureCapacityInternal(count + len);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    str.getChars(<span class="number">0</span>, len, value, count);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    count += len;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p>而它俩的区别就是StringBuffer的append方法上加了synchronized关键字，因此是线程安全的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Str</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        String str1 = <span class="string">"hello"</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        String str2 = <span class="string">"wolrd"</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">long</span> startTime = System.currentTimeMillis();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        System.out.println(<span class="string">"开始执行时间："</span>+ startTime);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">            sb.append(str1);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">long</span> stopTime = System.currentTimeMillis();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        System.out.println(<span class="string">"结束执行时间："</span>+ stopTime);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">        System.out.println(<span class="string">"StringBuffer执行100000次字符串拼接总共耗时："</span>+(stopTime - startTime)+<span class="string">"ms"</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">        StringBuilder sb1 = <span class="keyword">new</span> StringBuilder();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">long</span> startTime1 = System.currentTimeMillis();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">        System.out.println(<span class="string">"开始执行时间："</span>+ startTime1);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">            sb1.append(str1);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">long</span> stopTime1 = System.currentTimeMillis();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">        System.out.println(<span class="string">"结束执行时间："</span>+ stopTime1);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">        System.out.println(<span class="string">"StringBuilder执行100000次字符串拼接总共耗时："</span>+(stopTime1 - startTime1)+<span class="string">"ms"</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">开始执行时间：<span class="number">1591328952926</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">结束执行时间：<span class="number">1591328952933</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">StringBuffer执行<span class="number">100000</span>次字符串拼接总共耗时：<span class="number">7</span>ms</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">开始执行时间：<span class="number">1591328952934</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">结束执行时间：<span class="number">1591328952936</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">StringBuilder执行<span class="number">100000</span>次字符串拼接总共耗时：<span class="number">2</span>ms</span></pre></td></tr></table></figure>
+
+<p>StringBuilder的性能比StringBuffer的性能要好点。</p>
+<p>从上面的结果中，可以得出一个结论，那就是这四种的效率由快到慢依次是：</p>
+<p>StringBudiler&gt;StringBuffer&gt;concat&gt;+</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://2308502963.github.io/2020/06/04/java%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5/" data-id="ckb1ouaj4000au0uagykh19om" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-php-mysql" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/28/php-mysql/" class="article-date">
+  <time datetime="2020-04-28T02:51:30.744Z" itemprop="datePublished">2020-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/28/php-mysql/">php-mysql</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>php7.0连接mysql8.0报错：The server requested authentication method unknown to the client </p>
+<p>是因为mysql80使用了新的密码验证插件：caching_sha2_password,而在php7.0并不支持这种方式。</p>
+<p>解决办法：</p>
+<p>​    1.升级php</p>
+<p>​    2.修改mysql的配置文件，my.ini</p>
+<p>​            找到mysqlId下的default-authentication-plugin配置项修改其值为mysql_native_password</p>
+<p>重启mysql即可。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://2308502963.github.io/2020/04/28/php-mysql/" data-id="ckb1ouaj8000eu0ua9zpdc9hj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java数组" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/12/java%E6%95%B0%E7%BB%84/" class="article-date">
+  <time datetime="2020-04-12T07:35:44.228Z" itemprop="datePublished">2020-04-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/12/java%E6%95%B0%E7%BB%84/">java数组</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://2308502963.github.io/2020/04/12/java%E6%95%B0%E7%BB%84/" data-id="ckb1ouaej0000u0uac7jph694" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-javase" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/15/javase/" class="article-date">
+  <time datetime="2020-03-15T02:54:37.000Z" itemprop="datePublished">2020-03-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/15/javase/">javase</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-三元运算符"><a href="#1-三元运算符" class="headerlink" title="1.三元运算符"></a>1.三元运算符</h3><p>使用三元运算符来代替简单的if else分支语句。</p>
+<p>基本语法：逻辑表达式?表达式1:表达式2</p>
+<p>逻辑表达式为真返回表达式1，为假返回表达式2.</p>
+<p>==注意：表达式1和表达式2的类型必须相同。==</p>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sex = <span class="number">1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> s = sex == <span class="number">1</span>?<span class="string">'男'</span>:<span class="string">'女'</span>;</span></pre></td></tr></table></figure>
+
+<p>==三元运算符的返回值类型由表达式的类型决定。==这里的‘男’，‘女’的类型是字符型，所以返回值类型就是字符型。</p>
+<p>与之对应的if else的形式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sex = <span class="number">1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(sex == <span class="number">1</span>)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">char</span> s = <span class="string">'男'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;<span class="keyword">else</span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">char</span> s = <span class="string">'女'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p>这是表达式为常量的情况。</p>
+<p>表达式也可以是变量，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sex = <span class="number">1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">String man = <span class="string">"男生"</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">String nv = <span class="string">"女生"</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">String s = sex == <span class="number">1</span>?man:nv;</span></pre></td></tr></table></figure>
+
+<p>同时，也可以是一个表达式，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果分数大于90：A，如果大于等于60：B，如果小于60：c</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> score = <span class="number">80</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">String result = score &gt; <span class="number">90</span>?<span class="string">"A"</span>:(score &gt;= <span class="number">60</span>?<span class="string">"B"</span>:<span class="string">"C"</span>);</span></pre></td></tr></table></figure>
+
+<h3 id="2-方法"><a href="#2-方法" class="headerlink" title="2.方法"></a>2.方法</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://2308502963.github.io/2020/03/15/javase/" data-id="ckb1ouajb000iu0uaf22458yo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-mysql1033错误结局办法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/03/04/mysql1033%E9%94%99%E8%AF%AF%E7%BB%93%E5%B1%80%E5%8A%9E%E6%B3%95/" class="article-date">
@@ -95,7 +310,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://2308502963.github.io/2020/03/04/mysql1033%E9%94%99%E8%AF%AF%E7%BB%93%E5%B1%80%E5%8A%9E%E6%B3%95/" data-id="ck7rpegvn000hs4ua7q0s9o27" class="article-share-link">Share</a>
+      <a data-url="https://2308502963.github.io/2020/03/04/mysql1033%E9%94%99%E8%AF%AF%E7%BB%93%E5%B1%80%E5%8A%9E%E6%B3%95/" data-id="ckb1ouaji000ru0uafim54yua" class="article-share-link">Share</a>
       
       
     </footer>
@@ -146,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://2308502963.github.io/2020/02/20/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/" data-id="ck7rpegvi000cs4uadd63ebse" class="article-share-link">Share</a>
+      <a data-url="https://2308502963.github.io/2020/02/20/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/" data-id="ckb1ouajg000pu0uahd3b5n0h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E9%A1%B5/" rel="tag">分页</a></li></ul>
@@ -302,7 +517,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://2308502963.github.io/2020/01/17/SpringBoot%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" data-id="ck7rpegv80002s4ua5coedxu3" class="article-share-link">Share</a>
+      <a data-url="https://2308502963.github.io/2020/01/17/SpringBoot%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" data-id="ckb1ouaj30009u0ua2g31dvzn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -421,7 +636,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://2308502963.github.io/2020/01/15/Mybatis%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" data-id="ck7rpegw10013s4uaev971w7k" class="article-share-link">Share</a>
+      <a data-url="https://2308502963.github.io/2020/01/15/Mybatis%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" data-id="ckb1ouajw0019u0ua127z47ks" class="article-share-link">Share</a>
       
       
     </footer>
@@ -621,7 +836,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://2308502963.github.io/2020/01/12/SpringMvc%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" data-id="ck7rpegwg001fs4ua0zb49gky" class="article-share-link">Share</a>
+      <a data-url="https://2308502963.github.io/2020/01/12/SpringMvc%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" data-id="ckb1ouak8001lu0uagfx629aj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springmvc/" rel="tag">springmvc</a></li></ul>
@@ -722,272 +937,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://2308502963.github.io/2020/01/08/Spring%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/" data-id="ck7rpegw20014s4uadyu358ap" class="article-share-link">Share</a>
+      <a data-url="https://2308502963.github.io/2020/01/08/Spring%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/" data-id="ckb1ouajy001au0ua3dw56971" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-fight" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/10/fight/" class="article-date">
-  <time datetime="2019-12-10T04:56:57.000Z" itemprop="datePublished">2019-12-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%88%B1%E5%A5%BD/">爱好</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/10/fight/">fight</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://raw.githubusercontent.com/2308502963/images_stroe/master/Guitar/pic/fight/1.png" alt="1"></p>
-<p><img src="https://raw.githubusercontent.com/2308502963/images_stroe/master/Guitar/pic/fight/fight2.png" alt="2"></p>
-<p><img src="https://raw.githubusercontent.com/2308502963/images_stroe/master/Guitar/pic/fight/fight3.png" alt="3"></p>
-<p><img src="https://raw.githubusercontent.com/2308502963/images_stroe/master/Guitar/pic/fight/fight4.png" alt="4"></p>
-<p><img src="https://raw.githubusercontent.com/2308502963/images_stroe/master/Guitar/pic/fight/fight5.png" alt="5"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://2308502963.github.io/2019/12/10/fight/" data-id="ck7rpegvd0006s4ua31ichctd" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Guitar/" rel="tag">Guitar</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fight/" rel="tag">fight</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-always-with-me" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/10/always-with-me/" class="article-date">
-  <time datetime="2019-12-10T04:56:45.000Z" itemprop="datePublished">2019-12-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%88%B1%E5%A5%BD/">爱好</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/10/always-with-me/">always with me</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://raw.githubusercontent.com/2308502963/images_stroe/master/Guitar/pic/always%20with%20me/1.png" alt="1"></p>
-<p><img src="https://raw.githubusercontent.com/2308502963/images_stroe/master/Guitar/pic/always%20with%20me/2.png" alt="2"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://2308502963.github.io/2019/12/10/always-with-me/" data-id="ck7rpegvf0008s4uagtxjg0sp" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Guitar/" rel="tag">Guitar</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ssm学习过程中遇到的问题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/07/ssm%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="article-date">
-  <time datetime="2019-12-07T05:32:08.000Z" itemprop="datePublished">2019-12-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86/">知识</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/07/ssm%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">ssm学习过程中遇到的问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="2019-09-26："><a href="#2019-09-26：" class="headerlink" title="2019/09/26："></a>2019/09/26：</h5><p>1.配置包扫描器的时候把多写了类名，控制台报错No mapper…..</p>
-<p>2.maven项目导不进jar包：</p>
-<p>​                    出错原因：在pom.xml中添加依赖的时候外层多了denpendencyManegement标签对，导致jar包导不进，具体原因不清楚。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;denpendencyManagement&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">	&lt;denpendencies&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    &lt;/denpendencies&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&lt;/denpendencyManagement&gt;</span></pre></td></tr></table></figure>
-
-<hr>
-<h5 id="2019-09-27："><a href="#2019-09-27：" class="headerlink" title="2019/09/27："></a>2019/09/27：</h5><p>1.spring自动装配不了bean，即在service层使用@Autowired标签装配不了，报错是这样说的，忘记截屏了。</p>
-<p>但是其实是我的service层调用Dao层的时候方法的返回值没有写，导致事务一直回滚，卡在那里。</p>
-<h5 id="2019-10-05："><a href="#2019-10-05：" class="headerlink" title="2019/10/05："></a>2019/10/05：</h5><p>1.tomcat正常启动，项目部署正常，但是浏览器访问不了项目，404错误，但是访问项目中的<code>部分静态资源</code>正常</p>
-<p>​    原因：静态资源加载时被 springmvc 配置的前端控制器拦截了，我当时的前端控制器是这样配置的：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;!-- 配置前端控制器 --&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">-&lt;servlet&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&lt;servlet-name&gt;DispatcherServlet&lt;/servlet-name&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&lt;servlet-<span class="class"><span class="keyword">class</span>&gt;<span class="title">org</span>.<span class="title">springframework</span>.<span class="title">web</span>.<span class="title">servlet</span>.<span class="title">DispatcherServlet</span>&lt;/<span class="title">servlet</span>-<span class="title">class</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="class">&lt;!--初始化参数--&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="class">-&lt;<span class="title">init</span>-<span class="title">param</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="class">&lt;<span class="title">param</span>-<span class="title">name</span>&gt;<span class="title">contextConfigLocation</span>&lt;/<span class="title">param</span>-<span class="title">name</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&lt;param-value&gt;classpath:spring/springmvc.xml&lt;/param-value&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">&lt;/init-param&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">&lt;!--默认是在web-info下面加载.xml文件 --&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">&lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">&lt;/servlet&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">-&lt;servlet-mapping&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">&lt;servlet-name&gt;DispatcherServlet&lt;/servlet-name&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">&lt;url-pattern&gt;/&lt;/url-pattern&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">&lt;/servlet-mapping&gt;</span></pre></td></tr></table></figure>
-
-<p>​    所有的请求都被springmvc拦了下来。在url-pattern标签对中应该是*.action。拦截action，这样写的话，在Controller层的@RequestMapping(“”)中的地址就要以.action结尾才能拦截到。</p>
-<p>同时，还要配置springmvc.xml，要把静态资源交给eclipse自带的servlet处理。添加两个标签：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;mvc:annotation-drivern/&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">&lt;mvc:<span class="keyword">default</span>-servlet-handler/&gt;</span></pre></td></tr></table></figure>
-
-<p>或者是：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;mvc:resources location=<span class="string">"classpath:/*"</span> mapping=<span class="string">"/**"</span>&gt;</span></pre></td></tr></table></figure>
-
-<p>表示location下的资源可以使用路径直接访问</p>
-<hr>
-<h5 id="2019-10-13"><a href="#2019-10-13" class="headerlink" title="2019/10/13:"></a>2019/10/13:</h5><p><strong>图先欠着</strong></p>
-<p>​    resultType：当使用resultType做SQL语句返回结果类型处理时，对于SQL语句查询出的字段在相应的pojo中必须有和它相同的字段对应，而resultType中的内容就是pojo在本项目中的位置。(返回的值都是固定的)</p>
-<p>​    resultMap：当使用resultMap做SQL语句返回结果类型处理时，通常需要在mapper.xml中定义resultMap进行pojo和相应表字段的对应。(我理解的就是返回的值都是自定义的)</p>
-<h5 id="2019-10-15："><a href="#2019-10-15：" class="headerlink" title="2019/10/15："></a>2019/10/15：</h5><p><strong>图欠着</strong></p>
-<p>1.返回来的数据反不到js里面去，可能是因为返回的数据各式不是json的缘故。不是很懂。</p>
-<p>且@Controller的方法返回值是null，经过试图解析器之后的url有点问题。</p>
-<p>​    原因：Controller层的方法似乎默认执行完之后会经过试图解析器。会找一个jsp页面。</p>
-<p>​    解决：这个注解会返回json格式的数据，就可以返回到js中。</p>
-<p><img src="https://raw.githubusercontent.com/2308502963/images_stroe/master/images/wps1.jpg" alt="img"></p>
-<hr>
-<h5 id="2019-10-17："><a href="#2019-10-17：" class="headerlink" title="2019/10/17："></a>2019/10/17：</h5><p>1.在B方法中获取A方法的类（User）对象：</p>
-<p>声明一个全局变量：private User user；</p>
-<p>在A方法中给全局变量赋值：this.user=user;</p>
-<p>B方法中调用</p>
-<p>这是在Controller层要调用已经存在的User对象时候遇到的问题</p>
-<p><img src="https://raw.githubusercontent.com/2308502963/images_stroe/master/images/wps3.jpg" alt="img"> </p>
-<p>2.在jsp页面中显示回显信息：</p>
-<p><img src="https://raw.githubusercontent.com/2308502963/images_stroe/master/images/wps4.jpg" alt="img"> </p>
-<p>但是成功才会给”successinfo”设值，失败才会给failinfo设值，jsp页面写两句会包空指针</p>
-<p>，至少一个没有（2019/10/20）搞定：使用jstl：使用request域存取数据比较好，因为request存取数据的作用域只是一次请求，session的作用域是一次会话。当一次提示之后就应该释放资源，不然下一次访问还会存在。msg.jsp中就会有多个信息。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;!-- user_Active.action --&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">       &lt;c:<span class="keyword">if</span> test=<span class="string">"$&#123;!empty successinfo &#125;"</span>&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">       	&lt;%=request.getAttribute(<span class="string">"successinfo"</span>) %&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">       &lt;/c:if&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">       &lt;c:<span class="keyword">if</span> test=<span class="string">"$&#123;!empty failinfo &#125;"</span>&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">       	&lt;%=request.getAttribute(<span class="string">"failinfo"</span>) %&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">       &lt;/c:if&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">       &lt;!-- login.action --&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">       &lt;c:<span class="keyword">if</span> test=<span class="string">"$&#123;!empty loginerror &#125;"</span>&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">       	&lt;%=request.getAttribute(<span class="string">"loginerror"</span>) %&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">       &lt;/c:if&gt; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">       &lt;c:<span class="keyword">if</span> test=<span class="string">"$&#123;!empty loginerror2 &#125;"</span>&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">       	&lt;%=request.getAttribute(<span class="string">"loginerror2"</span>) %&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">       &lt;/c:if&gt;</span></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h5 id="2019-10-20"><a href="#2019-10-20" class="headerlink" title="2019/10/20:"></a>2019/10/20:</h5><p>ModelAndView类的使用：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/findBypid.action"</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">	<span class="function"><span class="keyword">public</span> ModelAndView <span class="title">findBypid</span><span class="params">(String pid)</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">		<span class="comment">//根据pid查询对应的商品</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">		product pro = productService.findBypid(pid);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">					跳转的页面  key	value</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> ModelAndView(<span class="string">"product"</span>,<span class="string">"product"</span>,pro);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h5 id="2019-10-27"><a href="#2019-10-27" class="headerlink" title="2019/10/27:"></a>2019/10/27:</h5><p>mybatis框架中使用不同类型的参数进行查询时，*mapper.xml中的parameter=””属性可以不用写，mybatis自动将参数封装成param1,param2…直接调用就可以</p>
-<p><img src="https://raw.githubusercontent.com/2308502963/images_stroe/master/images/wps6.jpg" alt="img"></p>
-<hr>
-<h5 id="2019-11-13"><a href="#2019-11-13" class="headerlink" title="2019/11/13:"></a>2019/11/13:</h5><p>mybatis中配置文件中的sql：</p>
-<p>1.插入操作获取插入后的id值：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;selectKey keyProperty=<span class="string">"oid"</span> keyColumn=<span class="string">"oid"</span> resultType=<span class="string">"int"</span> order=<span class="string">"AFTER"</span>&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">			<span class="function">select <span class="title">last_insert_id</span><span class="params">()</span></span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&lt;/selectKey&gt;</span></pre></td></tr></table></figure>
-
-<p>2.使用<foreach>标签批量插入数据：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function">insert into <span class="title">orderitem</span> <span class="params">(count,subtotal,pid,oid)</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function">			values</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="function">			&lt;foreach collection</span>=<span class="string">"orderItems"</span> item=<span class="string">"item"</span> separator=<span class="string">","</span>&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">			(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">				$&#123;item.count&#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">				$&#123;item.subtotal&#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">				$&#123;item.pro.pid&#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">				$&#123;oid&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">			)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">		&lt;/foreach&gt;</span></pre></td></tr></table></figure>
-
-<p>3.解决三表联合查询的问题：（嵌套使用<association>或者是<assoiation>）</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;resultMap type=<span class="string">"cn.fzkj.pojo.Order"</span> id=<span class="string">"orders"</span>&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">		&lt;result property=<span class="string">"oid"</span> javaType=<span class="string">"java.lang.Integer"</span> column=<span class="string">"oid"</span>/&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">		&lt;result property=<span class="string">"total"</span> javaType=<span class="string">"java.lang.Double"</span> column=<span class="string">"total"</span>/&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">		&lt;result property=<span class="string">"ordertime"</span> javaType=<span class="string">"java.util.Date"</span> column=<span class="string">"ordertime"</span>/&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">		&lt;result property=<span class="string">"state"</span> javaType=<span class="string">"java.lang.Integer"</span> column=<span class="string">"state"</span>/&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">		&lt;result property=<span class="string">"name"</span> javaType=<span class="string">"java.lang.String"</span> column=<span class="string">"name"</span>/&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">		&lt;result property=<span class="string">"addr"</span> javaType=<span class="string">"java.lang.String"</span> column=<span class="string">"addr"</span>/&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">		&lt;result property=<span class="string">"phone"</span> javaType=<span class="string">"java.lang.String"</span> column=<span class="string">"phone"</span>/&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">		&lt;association property=<span class="string">"orderItems"</span> javaType=<span class="string">"cn.fzkj.pojo.OrderItem"</span>&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">			&lt;result property=<span class="string">"itemId"</span> javaType=<span class="string">"java.lang.Integer"</span> column=<span class="string">"itemid"</span>/&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">			&lt;result property=<span class="string">"count"</span> javaType=<span class="string">"java.lang.Integer"</span> column=<span class="string">"count"</span>/&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">			&lt;result property=<span class="string">"subtotal"</span> javaType=<span class="string">"java.lang.Double"</span> column=<span class="string">"subtotal"</span>/&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">			&lt;collection property=<span class="string">"pro"</span> javaType=<span class="string">"cn.fzkj.pojo.product"</span>&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">				&lt;result property=<span class="string">"pid"</span> javaType=<span class="string">"java.lang.Integer"</span> column=<span class="string">"pid"</span> /&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">				&lt;result property=<span class="string">"pname"</span> javaType=<span class="string">"java.lang.String"</span> column=<span class="string">"pname"</span> /&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">				&lt;result property=<span class="string">"market_price"</span> javaType=<span class="string">"java.lang.Double"</span> column=<span class="string">"market_price"</span> /&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">				&lt;result property=<span class="string">"shop_price"</span> javaType=<span class="string">"java.lang.Double"</span> column=<span class="string">"shop_price"</span> /&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">				&lt;result property=<span class="string">"image"</span> javaType=<span class="string">"java.lang.String"</span> column=<span class="string">"image"</span> /&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">				&lt;result property=<span class="string">"pdesc"</span> javaType=<span class="string">"java.lang.String"</span> column=<span class="string">"pdesc"</span> /&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">				&lt;result property=<span class="string">"is_hot"</span> javaType=<span class="string">"java.lang.String"</span> column=<span class="string">"is_hot"</span> /&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">				&lt;result property=<span class="string">"pdate"</span> javaType=<span class="string">"java.util.Date"</span> column=<span class="string">"pdate"</span> /&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">				&lt;result property=<span class="string">"csid"</span> javaType=<span class="string">"java.lang.Integer"</span> column=<span class="string">"csid"</span> /&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">			&lt;/collection&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">		&lt;/association&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">	&lt;/resultMap&gt;</span></pre></td></tr></table></figure>
-
-<hr>
-<h5 id="2019-11-28："><a href="#2019-11-28：" class="headerlink" title="2019/11/28："></a>2019/11/28：</h5><p>1.在改js验证表单的功能，发现我不管怎么修改js代码，网页上没有变，换个浏览器就好了，应该是浏览器的缓存。百度了一下，果然是：</p>
-<p>​    实际上你每次访问页面. 浏览器都会发起不同的请求获得页面中引入到的js/css/图片什么的. 而对于浏览器来说相同路径的文件除非你设置过不使用缓存, 否则每次都还是会优先从缓存中获得文件内容. 这样有助于节省你的网络开销。</p>
-<p>​    解决方式：在引用的js的src后面加上时间戳或者一个随机数</p>
-<p>2.把之前项目上的不影响运行的小红叉改掉了。具体原因看不懂，<a href="https://blog.csdn.net/u011781521/article/details/72903455" target="_blank" rel="noopener">解决链接</a></p>
-<hr>
-<h5 id="2019-12-07"><a href="#2019-12-07" class="headerlink" title="2019/12/07:"></a>2019/12/07:</h5><ul>
-<li><p>1.git使用命令行同步仓库到github：</p>
-<p>​    git add .  ：添加进暂存区</p>
-<p>​    git commit -m’备注’    ：添加进版本库</p>
-<p>​    git push -u origin master : 推送到github</p>
-</li>
-<li><p>2.在markdown中引用github上的图片床：（主要是要获取到github上的图片链接）</p>
-</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/2308502963/images_stroe/master/images/git.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/2308502963/images_stroe/master/images/git2.png" alt=""></p>
-<p>​        然后就可以使用markdown的语法进行引用了。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://2308502963.github.io/2019/12/07/ssm%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" data-id="ck7rpegw30016s4ua4lme8n0z" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-置顶" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/06/%E7%BD%AE%E9%A1%B6/" class="article-date">
-  <time datetime="2019-12-06T07:51:50.000Z" itemprop="datePublished">2019-12-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%BD%AE%E9%A1%B6/">置顶</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/06/%E7%BD%AE%E9%A1%B6/">置顶</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="初衷"><a href="#初衷" class="headerlink" title="初衷"></a>初衷</h1><p>无意间看到的一个东西，觉得挺有意思。就试试看<br>感觉也会给自己的学习提供一些帮助。</p>
-<hr>
-<p>记录一些学习过程中遇到的东西，障碍啊、新的知识啊等等</p>
-<p>也记录一些自己喜欢的东西</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://2308502963.github.io/2019/12/06/%E7%BD%AE%E9%A1%B6/" data-id="ck7rpegvk000ds4ua64fr3fbp" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ideology/" rel="tag">ideology</a></li></ul>
 
     </footer>
   </div>
@@ -1021,7 +974,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Guitar/" rel="tag">Guitar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fight/" rel="tag">fight</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ideology/" rel="tag">ideology</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/" rel="tag">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/" rel="tag">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E9%A1%B5/" rel="tag">分页</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/" rel="tag">标记语言</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Guitar/" rel="tag">Guitar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fight/" rel="tag">fight</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ideology/" rel="tag">ideology</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/" rel="tag">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/" rel="tag">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E9%A1%B5/" rel="tag">分页</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/" rel="tag">标记语言</a></li></ul>
     </div>
   </div>
 
@@ -1031,7 +984,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Guitar/" style="font-size: 20px;">Guitar</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/fight/" style="font-size: 10px;">fight</a> <a href="/tags/ideology/" style="font-size: 10px;">ideology</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/%E5%88%86%E9%A1%B5/" style="font-size: 10px;">分页</a> <a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 20px;">技术</a> <a href="/tags/%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">标记语言</a>
+      <a href="/tags/Guitar/" style="font-size: 20px;">Guitar</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/fight/" style="font-size: 10px;">fight</a> <a href="/tags/ideology/" style="font-size: 10px;">ideology</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/%E5%88%86%E9%A1%B5/" style="font-size: 10px;">分页</a> <a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 20px;">技术</a> <a href="/tags/%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">标记语言</a>
     </div>
   </div>
 
@@ -1040,7 +993,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li></ul>
     </div>
   </div>
 
@@ -1053,23 +1006,23 @@
       <ul>
         
           <li>
+            <a href="/2020/06/04/java%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5/">java字符串拼接</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/28/php-mysql/">php-mysql</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/java%E6%95%B0%E7%BB%84/">java数组</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/15/javase/">javase</a>
+          </li>
+        
+          <li>
             <a href="/2020/03/04/mysql1033%E9%94%99%E8%AF%AF%E7%BB%93%E5%B1%80%E5%8A%9E%E6%B3%95/">mysql1033错误结局办法</a>
-          </li>
-        
-          <li>
-            <a href="/2020/02/20/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">分页查询</a>
-          </li>
-        
-          <li>
-            <a href="/2020/01/17/SpringBoot%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">SpringBoot快速入门</a>
-          </li>
-        
-          <li>
-            <a href="/2020/01/15/Mybatis%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">Mybatis快速入门</a>
-          </li>
-        
-          <li>
-            <a href="/2020/01/12/SpringMvc%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">SpringMvc快速入门</a>
           </li>
         
       </ul>

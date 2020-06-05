@@ -5,13 +5,16 @@
   
 
   
-  <title>Category: markdown | 买条秋裤穿的个人博客</title>
+  <title>php-mysql | 买条秋裤穿的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="买条秋裤穿的个人博客">
-<meta property="og:url" content="https:&#x2F;&#x2F;2308502963.github.io&#x2F;categories&#x2F;markdown&#x2F;index.html">
+  <meta name="description" content="php7.0连接mysql8.0报错：The server requested authentication method unknown to the client  是因为mysql80使用了新的密码验证插件：caching_sha2_password,而在php7.0并不支持这种方式。 解决办法： ​    1.升级php ​    2.修改mysql的配置文件，my.ini ​">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php-mysql">
+<meta property="og:url" content="https:&#x2F;&#x2F;2308502963.github.io&#x2F;2020&#x2F;04&#x2F;28&#x2F;php-mysql&#x2F;index.html">
 <meta property="og:site_name" content="买条秋裤穿的个人博客">
+<meta property="og:description" content="php7.0连接mysql8.0报错：The server requested authentication method unknown to the client  是因为mysql80使用了新的密码验证插件：caching_sha2_password,而在php7.0并不支持这种方式。 解决办法： ​    1.升级php ​    2.修改mysql的配置文件，my.ini ​">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-28T02:57:39.698Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="买条秋裤穿的个人博客" type="application/atom+xml">
@@ -59,40 +62,67 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/12/06/Markdown%E7%9A%84%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  <time datetime="2019-12-06T06:57:20.000Z" itemprop="datePublished">Dec 6</time>
+        <section id="main"><article id="post-php-mysql" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/28/php-mysql/" class="article-date">
+  <time datetime="2020-04-28T02:51:30.744Z" itemprop="datePublished">2020-04-28</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/06/Markdown%E7%9A%84%E4%BD%BF%E7%94%A8/">Markdown的使用</a>
+    <h1 class="article-title" itemprop="name">
+      php-mysql
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>php7.0连接mysql8.0报错：The server requested authentication method unknown to the client </p>
+<p>是因为mysql80使用了新的密码验证插件：caching_sha2_password,而在php7.0并不支持这种方式。</p>
+<p>解决办法：</p>
+<p>​    1.升级php</p>
+<p>​    2.修改mysql的配置文件，my.ini</p>
+<p>​            找到mysqlId下的default-authentication-plugin配置项修改其值为mysql_native_password</p>
+<p>重启mysql即可。</p>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://2308502963.github.io/2020/04/28/php-mysql/" data-id="ckb1ouaj8000eu0ua9zpdc9hj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/06/04/java%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          java字符串拼接
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/12/java%E6%95%B0%E7%BB%84/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">java数组</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
